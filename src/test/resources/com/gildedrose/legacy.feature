@@ -32,7 +32,7 @@ Scenario: +5 Dexterity Vest decreases twice as fast when the sell by date has pa
 	Then its quality is 11
 
 
-Scenario: An item never decreases below 0
+Scenario: A quality of an item never decreases below 0
 	Given an item named "Elixir of the Mongoose" with quality 0 and which has to be sold in 0 days
 	When a day has passed
 	Then its quality is 0
@@ -74,3 +74,9 @@ Scenario: The backstage pass quality drops to 0 after concert
 	When a day has passed
 	Then it has to be sold in -1 days
 	And its quality is 0
+
+Scenario: A conjured item decreases in quality twice as fast as any other item
+	Given an item named "Conjured Mana Cake" with quality 8 and which has to be sold in 3 days
+	When a day has passed
+	Then it has to be sold in 2 days
+	And its quality is 6
